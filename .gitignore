@@ -1,4 +1,5 @@
 *.py[cod]
+__pycache__
 
 # C extensions
 *.so
@@ -25,6 +26,7 @@ pip-log.txt
 .coverage
 .tox
 nosetests.xml
+.cache
 
 # Translations
 *.mo
@@ -38,10 +40,10 @@ nosetests.xml
 .idea
 *.swp
 
-# xray specific
+# xarray specific
 doc/_build
 doc/generated
 doc/_static/*.png
-xray/version.py
+xarray/version.py
 
 .ipynb_checkpoints

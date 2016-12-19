@@ -1,0 +1,17 @@
+name: test_env
+channels:
+  - conda-forge
+dependencies:
+  - python=2.7
+  - cdat-lite
+  - dask
+  - distributed
+  - pytest
+  - numpy
+  - pandas>=0.15.0
+  - pynio
+  - scipy
+  - pytest-cov
+  - cyordereddict
+  - pip:
+    - coveralls

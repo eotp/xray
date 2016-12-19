@@ -2,7 +2,7 @@
 .. This extra page is a work around for sphinx not having any support for
 .. hiding an autosummary table.
 
-.. currentmodule:: xray
+.. currentmodule:: xarray
 
 .. autosummary::
    :toctree: generated/
@@ -27,19 +27,25 @@
    Dataset.count
    Dataset.dropna
    Dataset.fillna
+   Dataset.where
 
    core.groupby.DatasetGroupBy.assign
    core.groupby.DatasetGroupBy.assign_coords
    core.groupby.DatasetGroupBy.first
    core.groupby.DatasetGroupBy.last
    core.groupby.DatasetGroupBy.fillna
+   core.groupby.DatasetGroupBy.where
 
    Dataset.argsort
    Dataset.clip
    Dataset.conj
    Dataset.conjugate
+   Dataset.imag
    Dataset.round
+   Dataset.real
    Dataset.T
+   Dataset.cumsum
+   Dataset.cumprod
 
    DataArray.ndim
    DataArray.shape
@@ -66,19 +72,25 @@
    DataArray.count
    DataArray.dropna
    DataArray.fillna
+   DataArray.where
 
    core.groupby.DataArrayGroupBy.assign_coords
    core.groupby.DataArrayGroupBy.first
    core.groupby.DataArrayGroupBy.last
    core.groupby.DataArrayGroupBy.fillna
+   core.groupby.DataArrayGroupBy.where
 
    DataArray.argsort
    DataArray.clip
    DataArray.conj
    DataArray.conjugate
+   DataArray.imag
    DataArray.searchsorted
    DataArray.round
+   DataArray.real
    DataArray.T
+   DataArray.cumsum
+   DataArray.cumprod
 
    ufuncs.angle
    ufuncs.arccos
@@ -139,3 +151,8 @@
    ufuncs.tan
    ufuncs.tanh
    ufuncs.trunc
+
+   plot.FacetGrid.map_dataarray
+   plot.FacetGrid.set_titles
+   plot.FacetGrid.set_ticks
+   plot.FacetGrid.map

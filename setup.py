@@ -1,24 +1,25 @@
- #!/usr/bin/env python
+#!/usr/bin/env python
 import os
 import re
 import sys
 import warnings
 
 from setuptools import setup, find_packages
+from setuptools import Command
 
 MAJOR = 0
-MINOR = 5
+MINOR = 8
 MICRO = 2
 ISRELEASED = False
 VERSION = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
 QUALIFIER = ''
 
 
-DISTNAME = 'xray'
+DISTNAME = 'xarray'
 LICENSE = 'Apache'
-AUTHOR = 'xray Developers'
-AUTHOR_EMAIL = 'xray-dev@googlegroups.com'
-URL = 'https://github.com/xray/xray'
+AUTHOR = 'xarray Developers'
+AUTHOR_EMAIL = 'xarray@googlegroups.com'
+URL = 'https://github.com/pydata/xarray'
 CLASSIFIERS = [
     'Development Status :: 4 - Beta',
     'License :: OSI Approved :: Apache Software License',
@@ -26,31 +27,28 @@ CLASSIFIERS = [
     'Intended Audience :: Science/Research',
     'Programming Language :: Python',
     'Programming Language :: Python :: 2',
-    'Programming Language :: Python :: 2.6',
     'Programming Language :: Python :: 2.7',
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.3',
     'Programming Language :: Python :: 3.4',
+    'Programming Language :: Python :: 3.5',
     'Topic :: Scientific/Engineering',
 ]
 
 INSTALL_REQUIRES = ['numpy >= 1.7', 'pandas >= 0.15.0']
-TESTS_REQUIRE = ['nose >= 1.0']
-
-if sys.version_info[:2] < (2, 7):
-    TESTS_REQUIRE += ["unittest2 == 0.5.1"]
+TESTS_REQUIRE = ['pytest >= 2.7.1']
 
 DESCRIPTION = "N-D labeled arrays and datasets in Python"
 LONG_DESCRIPTION = """
-**xray** is an open source project and Python package that aims to bring the
-labeled data power of pandas_ to the physical sciences, by providing
-N-dimensional variants of the core pandas data structures.
+**xarray** (formerly **xray**) is an open source project and Python package
+that aims to bring the labeled data power of pandas_ to the physical sciences,
+by providing N-dimensional variants of the core pandas data structures.
 
 Our goal is to provide a pandas-like and pandas-compatible toolkit for
 analytics on multi-dimensional arrays, rather than the tabular data for which
 pandas excels. Our approach adopts the `Common Data Model`_ for self-
 describing scientific data in widespread use in the Earth sciences:
-``xray.Dataset`` is an in-memory representation of a netCDF file.
+``xarray.Dataset`` is an in-memory representation of a netCDF file.
 
 .. _pandas: http://pandas.pydata.org
 .. _Common Data Model: http://www.unidata.ucar.edu/software/thredds/current/netcdf-java/CDM
@@ -60,9 +58,9 @@ describing scientific data in widespread use in the Earth sciences:
 Important links
 ---------------
 
-- HTML documentation: http://xray.readthedocs.org
-- Issue tracker: http://github.com/xray/xray/issues
-- Source code: http://github.com/xray/xray
+- HTML documentation: http://xarray.pydata.org
+- Issue tracker: http://github.com/pydata/xarray/issues
+- Source code: http://github.com/pydata/xarray
 - SciPy2015 talk: https://www.youtube.com/watch?v=X0pAhJgySxk
 """
 
@@ -88,8 +86,8 @@ if not ISRELEASED:
 
     if pipe is None or pipe.returncode != 0:
         # no git, or not in git dir
-        if os.path.exists('xray/version.py'):
-            warnings.warn("WARNING: Couldn't get git revision, using existing xray/version.py")
+        if os.path.exists('xarray/version.py'):
+            warnings.warn("WARNING: Couldn't get git revision, using existing xarray/version.py")
             write_version = False
         else:
             warnings.warn("WARNING: Couldn't get git revision, using generic version string")
@@ -120,7 +118,7 @@ short_version = '%s'
 """
     if not filename:
         filename = os.path.join(
-            os.path.dirname(__file__), 'xray', 'version.py')
+            os.path.dirname(__file__), 'xarray', 'version.py')
 
     a = open(filename, 'w')
     try:
@@ -130,7 +128,6 @@ short_version = '%s'
 
 if write_version:
     write_version_py()
-
 
 setup(name=DISTNAME,
       version=FULLVERSION,
@@ -143,6 +140,5 @@ setup(name=DISTNAME,
       install_requires=INSTALL_REQUIRES,
       tests_require=TESTS_REQUIRE,
       url=URL,
-      test_suite='nose.collector',
       packages=find_packages(),
-      package_data={'xray': ['test/data/*', 'plotting/default_colormap.csv']})
+      package_data={'xarray': ['test/data/*', 'plot/default_colormap.csv']})
